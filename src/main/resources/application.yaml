@@ -1,0 +1,32 @@
+spring:
+  application:
+    version: 1.0.0
+    name: tp_api_rest
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+    show-summary-output: all
+  datasource:
+    url: jdbc:postgresql://localhost:5000/api_rest_db
+    username: root
+    password: root
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+server:
+    port: 4000
+
+logging:
+  pattern:
+    level:
+      com.enigma.tp_api_rest:trace
+
+springdoc:
+  show-actuator: true
