@@ -14,3 +14,4 @@ public final class ViolationErrorField {
     private String fieldName;
     private Object rejectedValue;
 }
+

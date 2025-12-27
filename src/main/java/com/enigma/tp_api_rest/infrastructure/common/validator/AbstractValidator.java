@@ -1,9 +1,13 @@
 package com.enigma.tp_api_rest.infrastructure.common.validator;
 
+import com.enigma.tp_api_rest.infrastructure.common.exceptions.ValidationException;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.DirectFieldBindingResult;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Slf4j
 public abstract class AbstractValidator<T> implements Validator<T> {
@@ -42,12 +46,7 @@ public abstract class AbstractValidator<T> implements Validator<T> {
         }
     }
 
-    /**
-     * Verifier que les données sont valides et léver une exception de type {@link
-     * com.enigma.procolab.infrastructure.common.exceptions.ValidationException} sinon
-     *
-     * @return reponse de la validation
-     */
+
     @Override
     public boolean isValidOrThrow() {
         validateOneTime();
