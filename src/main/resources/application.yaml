@@ -7,9 +7,9 @@ spring:
     change-log: classpath:db/changelog/db.changelog-master.yaml
     show-summary-output: all
   datasource:
-    url: ${ DB_HOST }
-    username: ${ DB_USER }
-    password: ${ DB_PASSWORD}
+    url: ${DB_HOST}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -19,39 +19,37 @@ spring:
       hibernate:
         format_sql: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
-
+  mail:
+    host: ${SMTP_HOST}
+    port: ${SMTP_PORT}
+    username: ${SMTP_USERNAME}
+    password: ${SMTP_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
 server:
-    port: ${ SERVER_PORT }
-
-mail:
-  host: ${ SMTP_HOST }
-  port: ${ SMTP_PORT }
-  username: ${ SMTP_USERNAME }
-  password: ${ SMTP_PASSWORD }
-  properties:
-    mail:
-      smtp:
-        auth: true
-        starttls:
-          enable: true
-          required: true
+  port: ${SERVER_PORT}
 
 app:
   mail:
-    from: ${ MAIL_FROM }
-  base-url: ${ BASE_URL }
+    from: ${MAIL_FROM}
+  base-url: ${BASE_URL}
 logging:
   pattern:
     level:
-      com.enigma.tp_api_rest:trace
+      com.enigma.tp_api_rest:debug
 
 springdoc:
   show-actuator: true
 
 jwt:
-  secret: ${ JWT_SECRET }
-  expiration: ${ JWT_EXPIRATION }
-  access-token-expiration: ${ JWT_ACCESS_TOKEN_EXPIRATION }
-  refresh-token-expiration: ${ JWT_REFRESH_TOKEN_EXPIRATION }
-  email-verification-token-expiration: ${ JWT_EMAIL_VERIFICATION_TOKEN_EXPIRATION }
-  password-reset-token-expiration: ${ JWT_PASSWORD_RESET_TOKEN_EXPIRATION }
+  secret: ${JWT_SECRET}
+  expiration: ${JWT_EXPIRATION}
+  access-token-expiration: ${JWT_ACCESS_TOKEN_EXPIRATION}
+  refresh-token-expiration: ${JWT_REFRESH_TOKEN_EXPIRATION}
+  email-verification-token-expiration: ${JWT_EMAIL_VERIFICATION_TOKEN_EXPIRATION}
+  password-reset-token-expiration: ${JWT_PASSWORD_RESET_TOKEN_EXPIRATION}

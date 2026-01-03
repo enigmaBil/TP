@@ -33,6 +33,8 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers(
                                 "/api/v1/auth/register",
+                                "/api/v1/tasks",
+                                "/api/v1/categories",
                                 "/api/v1/auth/login",
                                 "/api/v1/auth/forgot-password",
                                 "/api/v1/auth/reset-password",

@@ -7,6 +7,7 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -28,5 +29,6 @@ public class Group extends BaseEntity{
     private String name;
     private String description;
     @ManyToMany(mappedBy = "groups")
+    @Builder.Default
     private Set<User> users = new HashSet<>();
 }

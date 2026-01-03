@@ -15,6 +15,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -47,13 +48,16 @@ public class User extends  BaseEntity implements UserDetails {
     private String password;
     @Enumerated(EnumType.STRING)
     private UserRole role;
+    @Builder.Default
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Task> tasks = new HashSet<>();
+
     @ManyToMany
     @JoinTable(name = "user_groups",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "group_id", referencedColumnName = "id")
     )
+    @Builder.Default
     private Set<Group> groups = new HashSet<>();
 
     @Override

@@ -1,0 +1,292 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1767397828746-1
+      author: Bilong
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_categories
+                  name: id
+                  type: UUID
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_date
+                  type: TIMESTAMP WITHOUT TIMEZONE
+              - column:
+                  name: last_modified_date
+                  type: TIMESTAMP WITHOUT TIMEZONE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_by
+                  type: VARCHAR(255)
+              - column:
+                  name: last_modified_by
+                  type: VARCHAR(255)
+              - column:
+                  name: deleted_date
+                  type: TIMESTAMP WITHOUT TIMEZONE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: reference
+                  type: VARCHAR(255)
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+            tableName: categories
+  - changeSet:
+      id: 1767397828746-2
+      author: Bilong
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_groups
+                  name: id
+                  type: UUID
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_date
+                  type: TIMESTAMP WITHOUT TIMEZONE
+              - column:
+                  name: last_modified_date
+                  type: TIMESTAMP WITHOUT TIMEZONE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_by
+                  type: VARCHAR(255)
+              - column:
+                  name: last_modified_by
+                  type: VARCHAR(255)
+              - column:
+                  name: deleted_date
+                  type: TIMESTAMP WITHOUT TIMEZONE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: reference
+                  type: VARCHAR(255)
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: description
+                  type: VARCHAR(255)
+            tableName: groups
+  - changeSet:
+      id: 1767397828746-3
+      author: Bilong
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_tasks
+                  name: id
+                  type: UUID
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_date
+                  type: TIMESTAMP WITHOUT TIMEZONE
+              - column:
+                  name: last_modified_date
+                  type: TIMESTAMP WITHOUT TIMEZONE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_by
+                  type: VARCHAR(255)
+              - column:
+                  name: last_modified_by
+                  type: VARCHAR(255)
+              - column:
+                  name: deleted_date
+                  type: TIMESTAMP WITHOUT TIMEZONE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: reference
+                  type: VARCHAR(255)
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: description
+                  type: VARCHAR(255)
+              - column:
+                  name: due
+                  type: DATE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: user_id
+                  type: UUID
+              - column:
+                  constraints:
+                    nullable: false
+                  name: category_id
+                  type: UUID
+            tableName: tasks
+  - changeSet:
+      id: 1767397828746-4
+      author: Bilong
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_user_groups
+                  name: group_id
+                  type: UUID
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_user_groups
+                  name: user_id
+                  type: UUID
+            tableName: user_groups
+  - changeSet:
+      id: 1767397828746-5
+      author: Bilong
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_users
+                  name: id
+                  type: UUID
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_date
+                  type: TIMESTAMP WITHOUT TIMEZONE
+              - column:
+                  name: last_modified_date
+                  type: TIMESTAMP WITHOUT TIMEZONE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_by
+                  type: VARCHAR(255)
+              - column:
+                  name: last_modified_by
+                  type: VARCHAR(255)
+              - column:
+                  name: deleted_date
+                  type: TIMESTAMP WITHOUT TIMEZONE
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+              - column:
+                  name: password
+                  type: VARCHAR(255)
+              - column:
+                  name: role
+                  type: VARCHAR(255)
+            tableName: users
+  - changeSet:
+      id: 1767397828746-6
+      author: Bilong
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: email
+            constraintName: uc_74165e195b2f7b25de690d14a
+            tableName: users
+  - changeSet:
+      id: 1767397828746-7
+      author: Bilong
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: reference
+            constraintName: uc_categories_reference
+            tableName: categories
+  - changeSet:
+      id: 1767397828746-8
+      author: Bilong
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: reference
+            constraintName: uc_groups_reference
+            tableName: groups
+  - changeSet:
+      id: 1767397828746-9
+      author: Bilong
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: reference
+            constraintName: uc_tasks_reference
+            tableName: tasks
+  - changeSet:
+      id: 1767397828746-10
+      author: Bilong
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: category_id
+            baseTableName: tasks
+            constraintName: FK_TASKS_ON_CATEGORY
+            referencedColumnNames: id
+            referencedTableName: categories
+  - changeSet:
+      id: 1767397828746-11
+      author: Bilong
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: tasks
+            constraintName: FK_TASKS_ON_USER
+            referencedColumnNames: id
+            referencedTableName: users
+  - changeSet:
+      id: 1767397828746-12
+      author: Bilong
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: group_id
+            baseTableName: user_groups
+            constraintName: fk_usegro_on_group
+            referencedColumnNames: id
+            referencedTableName: groups
+  - changeSet:
+      id: 1767397828746-13
+      author: Bilong
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: user_groups
+            constraintName: fk_usegro_on_user
+            referencedColumnNames: id
+            referencedTableName: users
+
